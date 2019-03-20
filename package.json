@@ -1,0 +1,26 @@
+{
+  "name": "llsdn",
+  "version": "0.0.1",
+  "description": "An lldb plugin for ShadowNode and JerryScript, which enables inspection of JavaScript states for insights into ShadowNode processes and their core dumps.",
+  "bin": "index.js",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "python -m unittest discover"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yodaos-project/llsdn.git"
+  },
+  "keywords": [
+    "shadow-node",
+    "lldb"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yodaos-project/llsdn/issues"
+  },
+  "homepage": "https://github.com/yodaos-project/llsdn#readme"
+}

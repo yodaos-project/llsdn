@@ -19,3 +19,19 @@ To use llsdn you need to have the LLDB debugger installed. The recommended versi
   - For example, on Ubuntu 16.04 you can install the prerequisites with
 
     `apt-get install lldb-4.0 liblldb-4.0-dev`
+
+#### Install the Plugin
+
+###### Install llnode globally via npm
+
+If you have `lldb` available on your `PATH`, simply run:
+
+```
+npm install -g llsdn
+```
+
+After installing with npm, append following line in your `~/.lldbinit`:
+
+```
+command script import <replace with 'npx llsdn' output>
+```
