@@ -9,28 +9,35 @@ import optparse
 import shlex
 
 import ecma
+import llhelper
 
 
 def jrs_var(debugger, command, result, internal_dict):
     try:
         val = int(command, 10)
     except ValueError:
-        val = lldb.frame.FindVariable(command).value
+        frame = llhelper.get_selected_frame(debugger)
+        val = frame.FindVariable(command).value
         val = int(val, 10)
     if val is None:
         return
-    val = hex(ecma.get_pointer_from_ecma_value(val))
+    ecma_debugger = ecma.EcmaDebugger(debugger)
+    val = ecma_debugger.get_pointer_from_ecma_value(val)
+    val = hex(val)
     print('[DEBUG] val', val, file=result)
+
 
 def jrs_var_type(debugger, command, result, internal_dict):
     try:
         val = int(command, 10)
     except ValueError:
-        val = lldb.frame.FindVariable(command).value
+        frame = llhelper.get_selected_frame(debugger)
+        val = frame.FindVariable(command).value
         val = int(val, 10)
     if val is None:
         return
-    val_type = ecma.get_value_type_field(val)
+    ecma_debugger = ecma.EcmaDebugger(debugger)
+    val_type = ecma_debugger.get_value_type_field(val)
     print('[DEBUG] val type', val_type, file=result)
 
 
